@@ -3,7 +3,10 @@ package com.nhnacademy.edu.springframework;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MessageSendService {
     private MessageSender messageSender;
     private String phoneNumber;
@@ -11,7 +14,8 @@ public class MessageSendService {
     public MessageSendService() {
     }
 
-    public MessageSendService(MessageSender messageSender, String phoneNumber) {
+    @Autowired
+    public MessageSendService(@Qualifier("smsMessageSender") MessageSender messageSender, @Value("${phoneNumber}") String phoneNumber) {
         this.messageSender = messageSender;
         this.phoneNumber = phoneNumber;
     }
