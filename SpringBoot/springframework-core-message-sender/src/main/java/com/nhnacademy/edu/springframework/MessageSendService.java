@@ -1,6 +1,7 @@
 package com.nhnacademy.edu.springframework;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 
 public class MessageSendService {
@@ -11,7 +12,7 @@ public class MessageSendService {
     }
 
     @Autowired
-    public MessageSendService(@SMS(senderType = SenderType.SMS, dummy = false) MessageSender messageSender, @Value("${phoneNumber}") String phoneNumber) {
+    public MessageSendService(@Qualifier("smsMessageSender") MessageSender messageSender, @Value("${phoneNumber}") String phoneNumber) {
         this.messageSender = messageSender;
         this.phoneNumber = phoneNumber;
     }

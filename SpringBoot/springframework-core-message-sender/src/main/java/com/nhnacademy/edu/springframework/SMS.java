@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 //@Qualifier
 public @interface SMS {
-    SenderType senderType();
-
-    boolean dummy();
+//    SenderType senderType();
+//
+//    boolean dummy();
 }

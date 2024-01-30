@@ -20,12 +20,12 @@
         <constructor-arg value="01012345678"/>
     </bean>
 
-    <bean id="smsMessageSender" class="com.nhnacademy.edu.springframework.SmsMessageSender" init-method="init">
-        <qualifier type="com.nhnacademy.edu.springframework.SMS">
-            <attribute key="senderType" value="SMS"/>
-            <attribute key="dummy" value="false"/>
-        </qualifier>
-    </bean>
+<!--    <bean id="smsMessageSender" class="com.nhnacademy.edu.springframework.SmsMessageSender" init-method="init">-->
+<!--        <qualifier type="com.nhnacademy.edu.springframework.SMS">-->
+<!--            <attribute key="senderType" value="SMS"/>-->
+<!--            <attribute key="dummy" value="false"/>-->
+<!--        </qualifier>-->
+<!--    </bean>-->
 
     <bean id="emailMessageSender" class="com.nhnacademy.edu.springframework.EmailMessageSender"
           scope="prototype" destroy-method="cleanup">
