@@ -11,11 +11,15 @@ public class MessageSendService {
     public MessageSendService() {
     }
 
-    @Autowired
-    public MessageSendService(@Qualifier("smsMessageSender") MessageSender messageSender, @Value("${phoneNumber}") String phoneNumber) {
+    public MessageSendService(MessageSender messageSender, String phoneNumber) {
         this.messageSender = messageSender;
         this.phoneNumber = phoneNumber;
     }
+
+    public MessageSendService(MessageSender messageSender) {
+        this.messageSender = messageSender;
+    }
+
 
     public void doSendMessage(User user, String message) {
         user.setPhoneNumber(phoneNumber);
