@@ -11,7 +11,7 @@ import java.util.Arrays;
 @Aspect
 @Component
 public class ExecutionLogger {
-    @Around("execution(public void com.nhnacademy.edu.springframework.MessageSender.sendMessage(User, String))")
+    @Around("execution(public void com.nhnacademy.edu.springframework.MessageSender.*(..))")
     public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
@@ -19,7 +19,9 @@ public class ExecutionLogger {
         Object returnValue = joinPoint.proceed();
 
         stopWatch.stop();
-        System.out.println(Arrays.toString(Arrays.stream(joinPoint.getArgs()).toArray()));
+        System.out.println(joinPoint);
+        System.out.println("joinPoint.getArgs() : " + Arrays.toString(joinPoint.getArgs()));
+        System.out.println(stopWatch.prettyPrint());
         System.out.println(joinPoint.getSignature().getName() + " 실행 시간: " + stopWatch.getTotalTimeMillis() + "ms");
 
         return returnValue;
