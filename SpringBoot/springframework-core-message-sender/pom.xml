@@ -37,4 +37,16 @@
             <version>5.3.15</version>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>release</id>
+            <url>https://github.com/edu-springboot/edu-springboot-maven-repo/raw/master/releases</url>
+        </repository>
+
+        <repository>
+            <id>snapshot</id>
+            <url>https://github.com/edu-springboot/edu-springboot-maven-repo/raw/master/snapshots</url>
+        </repository>
+    </repositories>
 </project>
