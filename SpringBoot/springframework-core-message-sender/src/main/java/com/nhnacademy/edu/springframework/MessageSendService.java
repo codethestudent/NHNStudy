@@ -15,7 +15,7 @@ public class MessageSendService {
     }
 
     @Autowired
-    public MessageSendService(@Qualifier("smsMessageSender") MessageSender messageSender, @Value("${phoneNumber}") String phoneNumber) {
+    public MessageSendService(@Qualifier("doorayMessageSender") MessageSender messageSender, @Value("${phoneNumber}") String phoneNumber) {
         this.messageSender = messageSender;
         this.phoneNumber = phoneNumber;
     }
