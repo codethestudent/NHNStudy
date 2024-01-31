@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <context:annotation-config/>
+    <context:property-placeholder location="classpath:names.properties"/>
+
+
+    <bean class="org.springframework.beans.factory.annotation.CustomAutowireConfigurer">
+        <property name="customQualifierTypes">
+            <set>
+                <value>com.nhnacademy.edu.springframework.annotations.MeasureExecutionTime</value>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="doorayMessageSender" class="com.nhnacademy.edu.springframework.sender.impl.DoorayMessageSender">
+        <constructor-arg ref="doorayHookSender"/>
+    </bean>
+
+    <bean id="doorayHookSender" class="com.nhnacademy.edu.springframework.sender.impl.DoorayHookSender">
+        <constructor-arg ref="restTemplate"/>
+        <constructor-arg value="${hookurl}"/>
+    </bean>
+
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate"/>
+
+    <aop:aspectj-autoproxy/>
+    <aop:config>
+        <aop:aspect id="executionTimeLogger" ref="executionTimeAspect">
+            <aop:around method="measureExecutionTime"
+                        pointcut="execution(public * com.nhnacademy.edu.springframework.sender.impl.DoorayMessageSender.sendMessage(..))"/>
+        </aop:aspect>
+    </aop:config>
+    <bean id="executionTimeAspect" class="com.nhnacademy.edu.springframework.aop.ExecutionTimeAspect"/>
+
+    <bean id="messageSendService" class="com.nhnacademy.edu.springframework.service.MessageSendService">
+        <constructor-arg ref="doorayMessageSender"/>
+    </bean>
+
+</beans>
