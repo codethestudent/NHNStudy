@@ -12,6 +12,6 @@ public class Main {
     public static void main(String[] args) {
         User user = new User("하준영", "010-1234-1234");
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(JavaConfig.class);
-        context.getBean("messageSendService", MessageSendService.class).doSendMessage(user, "hello world");
+        context.getBean("messageSendService", MessageSendService.class).doSendMessage(user, "hello dooray~!");
     }
 }
