@@ -1,4 +1,4 @@
-package com.nhnacademy.edu.springframework.sender.impl;
+package com.nhnacademy.edu.springframework.sender;
 
 import com.nhn.dooray.client.DoorayHook;
 import org.springframework.web.client.RestTemplate;
