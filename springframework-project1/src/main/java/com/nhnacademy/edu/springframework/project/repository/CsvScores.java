@@ -56,7 +56,6 @@ public class CsvScores implements Scores {
 
     @Override
     public List<Score> findAll() {
-        load();
         return allScores;
     }
 }
