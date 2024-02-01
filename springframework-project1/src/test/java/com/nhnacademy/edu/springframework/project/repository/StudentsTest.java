@@ -53,8 +53,7 @@ class StudentsTest {
 
         Collection<Student> students = csvStudents.findAll();
         Assertions.assertEquals((int) students.stream()
-                .filter(student ->
-                        Objects.nonNull(student.getScore()))
+                .filter(student -> Objects.nonNull(student.getScore()))
                 .count(), csvScores.findAll().size()
         );
     }

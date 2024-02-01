@@ -40,6 +40,9 @@ public class DefaultGradeQueryService implements GradeQueryService {
                 }
             }
         }
+        if (scoreList.isEmpty()) {
+            throw new NullPointerException();
+        }
         return scoreList;
     }
 
