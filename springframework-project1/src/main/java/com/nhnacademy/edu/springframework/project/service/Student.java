@@ -16,8 +16,16 @@ public class Student {
         this.score = score;
     }
 
-    public Score getScore(){
+    public Score getScore() {
         return this.score;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getSeq() {
+        return this.seq;
     }
 
     @Override
@@ -26,6 +34,6 @@ public class Student {
                 "seq=" + seq +
                 ", name='" + name + '\'' +
                 ", score=" + score +
-                '}'+ '\n';
+                '}' + '\n';
     }
 }
