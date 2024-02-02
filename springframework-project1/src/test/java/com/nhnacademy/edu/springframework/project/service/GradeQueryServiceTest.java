@@ -20,6 +20,12 @@ class GradeQueryServiceTest {
 
     @Test
     void getScoreByStudentSeq() {
+        GradeQueryService gradeQueryService = new DefaultGradeQueryService();
+        DataLoadService dataLoadService = new CsvDataLoadService();
+        dataLoadService.loadAndMerge();
 
+        Assertions.assertEquals(30, gradeQueryService.getScoreByStudentSeq(1).getScore());
+        Assertions.assertEquals(80, gradeQueryService.getScoreByStudentSeq(2).getScore());
+        Assertions.assertEquals(70, gradeQueryService.getScoreByStudentSeq(3).getScore());
     }
 }

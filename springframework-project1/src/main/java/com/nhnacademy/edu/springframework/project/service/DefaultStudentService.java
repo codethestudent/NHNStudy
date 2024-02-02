@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -12,11 +13,10 @@ public class DefaultStudentService implements StudentService {
     @Override
     public Collection<Student> getPassedStudents() {
         Students studentRepository = CsvStudents.getInstance();
-        Scores scoreRepository = CsvScores.getInstance();
-        studentRepository.merge(scoreRepository.findAll());
 
         return studentRepository.findAll().stream()
-                .filter(student -> !(student.getScore().isFail()))
+                .filter(student -> Objects.nonNull(student.getScore()))
+                .filter(student -> !student.getScore().isFail())
                 .collect(Collectors.toList());
     }
 
@@ -25,7 +25,8 @@ public class DefaultStudentService implements StudentService {
         Students studentRepository = CsvStudents.getInstance();
 
         return studentRepository.findAll().stream()
-                .sorted(Comparator.comparing(student -> student.getScore().getScore()))
+                .filter(student -> Objects.nonNull(student.getScore()))
+                .sorted(Comparator.comparing((Student student) -> student.getScore().getScore()).reversed())
                 .collect(Collectors.toList());
     }
 

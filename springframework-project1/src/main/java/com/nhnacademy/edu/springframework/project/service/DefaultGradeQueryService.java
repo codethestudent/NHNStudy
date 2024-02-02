@@ -50,7 +50,7 @@ public class DefaultGradeQueryService implements GradeQueryService {
     public Score getScoreByStudentSeq(int seq) {
         Collection<Score> scores = csvScores.findAll();
         return scores.stream()
-                .filter(score -> score.getScore() == seq)
+                .filter(score -> score.getStudentSeq() == seq)
                 .findFirst()
                 .orElseThrow(RuntimeException::new);
     }
