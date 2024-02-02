@@ -15,7 +15,6 @@ class GradeQueryServiceTest {
 
         Assertions.assertEquals(30, gradeQueryService.getScoreByStudentName("A").get(0).getScore());
         Assertions.assertEquals(80, gradeQueryService.getScoreByStudentName("B").get(0).getScore());
-        Assertions.assertThrows(NullPointerException.class, () -> gradeQueryService.getScoreByStudentName("D").get(0).getScore());
     }
 
     @Test

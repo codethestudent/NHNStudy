@@ -12,9 +12,7 @@ import java.util.stream.Collectors;
 public class DefaultStudentService implements StudentService {
     @Override
     public Collection<Student> getPassedStudents() {
-        Students studentRepository = CsvStudents.getInstance();
-
-        return studentRepository.findAll().stream()
+        return CsvStudents.getInstance().findAll().stream()
                 .filter(student -> Objects.nonNull(student.getScore()))
                 .filter(student -> !student.getScore().isFail())
                 .collect(Collectors.toList());
@@ -22,9 +20,7 @@ public class DefaultStudentService implements StudentService {
 
     @Override
     public Collection<Student> getStudentsOrderByScore() {
-        Students studentRepository = CsvStudents.getInstance();
-
-        return studentRepository.findAll().stream()
+        return CsvStudents.getInstance().findAll().stream()
                 .filter(student -> Objects.nonNull(student.getScore()))
                 .sorted(Comparator.comparing((Student student) -> student.getScore().getScore()).reversed())
                 .collect(Collectors.toList());
