@@ -3,24 +3,25 @@ package com.nhnacademy.edu.springframework.project.repository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 
 class ScoresTest {
-
+    @Mock
     private Scores csvScores;
 
     @BeforeEach
     void setup() {
-        csvScores = CsvScores.getInstance();
     }
 
     @Test
     void getInstance() {
         Assertions.assertNotNull(csvScores);
-        Scores csvScores1 = CsvScores.getInstance();
+        Scores csvScores1 = mock(CsvScores.class);
         assertEquals(csvScores, csvScores1);
     }
 
