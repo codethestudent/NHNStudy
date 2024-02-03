@@ -10,40 +10,20 @@ import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DefaultGradeQueryService implements GradeQueryService {
     private final Students csvStudents = CsvStudents.getInstance();
     private final Scores csvScores = CsvScores.getInstance();
 
-    private List<Integer> getStudentSeqByStudentName(String name) {
-        List<Integer> studentSeqList = new ArrayList<>();
-        Collection<Student> studentList = csvStudents.findAll();
-        for (Student student : studentList) {
-            if (student.getName().equals(name)) {
-                studentSeqList.add(student.getSeq());
-            }
-        }
-        return studentSeqList;
-    }
 
     @Override
     public List<Score> getScoreByStudentName(String name) {
-        Collection<Score> scores = csvScores.findAll();
-        List<Integer> studentSeqs = getStudentSeqByStudentName(name);
-
-        List<Score> scoreList = new ArrayList<>();
-
-        for (Integer seq : studentSeqs) {
-            for (Score score : scores) {
-                if (score.getStudentSeq() == seq) {
-                    scoreList.add(score);
-                }
-            }
-        }
-        if (scoreList.isEmpty()) {
-            throw new NullPointerException();
-        }
-        return scoreList;
+        return csvStudents.findAll().stream()
+                .filter(student -> student.getScore() != null)
+                .filter(student -> student.getName().equals(name))
+                .map(Student::getScore)
+                .collect(Collectors.toList());
     }
 
     @Override
