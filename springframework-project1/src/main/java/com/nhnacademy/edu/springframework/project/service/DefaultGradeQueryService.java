@@ -28,10 +28,9 @@ public class DefaultGradeQueryService implements GradeQueryService {
 
     @Override
     public Score getScoreByStudentSeq(int seq) {
-        Collection<Score> scores = csvScores.findAll();
-        return scores.stream()
+        return csvScores.findAll().stream()
                 .filter(score -> score.getStudentSeq() == seq)
                 .findFirst()
-                .orElseThrow(RuntimeException::new);
+                .orElse(null);
     }
 }
