@@ -10,9 +10,6 @@ import java.util.List;
 public class CsvScores implements Scores {
     private List<Score> allScores;
 
-    public CsvScores() {
-    }
-
     @Override
     public void load() {
         try (InputStream is = this.getClass().getClassLoader().getResourceAsStream("data/score.csv");

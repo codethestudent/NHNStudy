@@ -2,6 +2,7 @@ package com.nhnacademy.edu.springframework.project.service;
 
 import com.nhnacademy.edu.springframework.project.annotation.MeasureExecutionTime;
 import com.nhnacademy.edu.springframework.project.repository.*;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,7 @@ public class DefaultGradeQueryService implements GradeQueryService {
     @MeasureExecutionTime
     public List<Score> getScoreByStudentName(String name) {
         return csvStudents.findAll().stream()
-                .filter(student -> Objects.nonNull(student.getScore()))
+                .filter(student -> student.getScore() != null)
                 .filter(student -> student.getName().equals(name))
                 .map(Student::getScore)
                 .collect(Collectors.toList());
@@ -44,6 +45,6 @@ public class DefaultGradeQueryService implements GradeQueryService {
         return csvScores.findAll().stream()
                 .filter(score -> score.getStudentSeq() == seq)
                 .findFirst()
-                .orElseThrow(RuntimeException::new);
+                .orElse(null);
     }
 }

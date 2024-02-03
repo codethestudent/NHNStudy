@@ -1,29 +1,34 @@
 package com.nhnacademy.edu.springframework.project.service;
 
-import com.nhnacademy.edu.springframework.project.repository.CsvStudents;
+import com.nhnacademy.edu.springframework.project.repository.Scores;
 import com.nhnacademy.edu.springframework.project.repository.Students;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
-import java.util.Collection;
-import java.util.Objects;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.*;
 
 class DataLoadServiceTest {
-    private final Students csvStudents = CsvStudents.getInstance();
+    @Mock
+    private Students csvStudents;
+    @Mock
+    private Scores scores;
+
+    @BeforeEach
+    void setup() {
+        MockitoAnnotations.initMocks(this);
+    }
 
     @Test
     void loadAndMerge() {
-        csvStudents.load();
-        DataLoadService dataLoadService = new CsvDataLoadService();
+        DataLoadService dataLoadService = new CsvDataLoadService(scores, csvStudents);
 
         dataLoadService.loadAndMerge();
 
-        Assertions.assertEquals((int) csvStudents.findAll().stream()
-                .filter(student -> Objects.nonNull(student.getScore()))
-                .count(), csvStudents.findAll().size() - 1
-        );
+        verify(scores, times(1)).load();
+        verify(csvStudents, times(1)).load();
+        verify(scores, times(1)).findAll();
+        verify(csvStudents, times(1)).merge(anyList());
     }
 }

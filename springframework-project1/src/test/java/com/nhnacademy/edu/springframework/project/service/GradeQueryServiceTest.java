@@ -1,30 +1,64 @@
 package com.nhnacademy.edu.springframework.project.service;
 
+import com.nhnacademy.edu.springframework.project.repository.CsvScores;
+import com.nhnacademy.edu.springframework.project.repository.Score;
+import com.nhnacademy.edu.springframework.project.repository.Scores;
+import com.nhnacademy.edu.springframework.project.repository.Students;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+
+import static org.mockito.Mockito.*;
 
 class GradeQueryServiceTest {
+    private GradeQueryService gradeQueryService;
+    @Mock
+    private Students students;
+    @Mock
+    private Scores scores;
+
+    @BeforeEach
+    void setup() {
+        MockitoAnnotations.initMocks(this);
+        gradeQueryService = new DefaultGradeQueryService(students, scores);
+    }
 
     @Test
     void getScoreByStudentName() {
-        GradeQueryService gradeQueryService = new DefaultGradeQueryService();
-        DataLoadService dataLoadService = new CsvDataLoadService();
-        dataLoadService.loadAndMerge();
+        String studentName = "A";
+        Student student1 = new Student(1, studentName);
+        student1.setScore(new Score(1, 100));
 
-        Assertions.assertEquals(30, gradeQueryService.getScoreByStudentName("A").get(0).getScore());
-        Assertions.assertEquals(80, gradeQueryService.getScoreByStudentName("B").get(0).getScore());
+        Student student2 = new Student(2, studentName);
+        student2.setScore(new Score(2, 90));
+
+        List<Student> mockStudents = Arrays.asList(student1, student2);
+        when(students.findAll()).thenReturn(mockStudents);
+
+        List<Score> scores = gradeQueryService.getScoreByStudentName(studentName);
+        verify(students, times(1)).findAll();
+        Assertions.assertEquals(2, scores.size());
+        Assertions.assertEquals(100, scores.get(0).getScore());
     }
 
     @Test
     void getScoreByStudentSeq() {
-        GradeQueryService gradeQueryService = new DefaultGradeQueryService();
-        DataLoadService dataLoadService = new CsvDataLoadService();
-        dataLoadService.loadAndMerge();
+        int studentSeq = 1;
+        List<Score> mockScores = Collections.singletonList(new Score(studentSeq, 100));
+        when(scores.findAll()).thenReturn(mockScores);
 
-        Assertions.assertEquals(30, gradeQueryService.getScoreByStudentSeq(1).getScore());
-        Assertions.assertEquals(80, gradeQueryService.getScoreByStudentSeq(2).getScore());
-        Assertions.assertEquals(70, gradeQueryService.getScoreByStudentSeq(3).getScore());
+        Score score = gradeQueryService.getScoreByStudentSeq(studentSeq);
+
+        verify(scores, times(1)).findAll();
+        Assertions.assertNotNull(score);
+        Assertions.assertEquals(100, score.getScore());
     }
 }
