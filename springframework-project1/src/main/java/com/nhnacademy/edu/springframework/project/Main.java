@@ -13,16 +13,17 @@ import java.util.Collection;
 public class Main {
 
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(JavaConfig.class);
-        context.getBean("csvDataLoadService", DataLoadService.class).loadAndMerge();
-        StudentService studentService = context.getBean("defaultStudentService", StudentService.class);
+        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(JavaConfig.class)) {
 
-        Collection<Student> passedStudents = studentService.getPassedStudents();
-        System.out.println(passedStudents);
+            context.getBean("csvDataLoadService", DataLoadService.class).loadAndMerge();
+            StudentService studentService = context.getBean("defaultStudentService", StudentService.class);
 
-        Collection<Student> orderedStudents = studentService.getStudentsOrderByScore();
-        System.out.println(orderedStudents);
+            Collection<Student> passedStudents = studentService.getPassedStudents();
+            System.out.println(passedStudents);
 
-        context.close();
+            Collection<Student> orderedStudents = studentService.getStudentsOrderByScore();
+            System.out.println(orderedStudents);
+        }
+
     }
 }

@@ -1,6 +1,5 @@
 package com.nhnacademy.edu.springframework.project.service;
 
-import com.nhnacademy.edu.springframework.project.repository.CsvScores;
 import com.nhnacademy.edu.springframework.project.repository.Score;
 import com.nhnacademy.edu.springframework.project.repository.Scores;
 import com.nhnacademy.edu.springframework.project.repository.Students;
@@ -13,8 +12,6 @@ import org.mockito.MockitoAnnotations;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
 
 import static org.mockito.Mockito.*;
 
