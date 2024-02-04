@@ -9,8 +9,8 @@ import org.springframework.web.client.RestTemplate;
 
 @Component
 public class DoorayHookSender {
-    private RestTemplate restTemplate;
-    private String url;
+    private final RestTemplate restTemplate;
+    private final String url;
 
     @Autowired
     public DoorayHookSender(@Qualifier("restTemplate") RestTemplate restTemplate, @Value("${hookurl}") String url) {

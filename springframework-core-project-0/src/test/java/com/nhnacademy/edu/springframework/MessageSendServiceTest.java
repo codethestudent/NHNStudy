@@ -5,14 +5,13 @@ import com.nhnacademy.edu.springframework.service.MessageSendService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.MockitoAnnotations;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-@ExtendWith(MockitoExtension.class)
+
 public class MessageSendServiceTest {
     private User user;
     @InjectMocks
@@ -22,6 +21,7 @@ public class MessageSendServiceTest {
 
     @BeforeEach
     void setup() {
+        MockitoAnnotations.initMocks(this);
         user = new User("jun", "01029297979");
     }
 
