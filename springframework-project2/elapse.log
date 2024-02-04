@@ -2,3 +2,4 @@
 2024-02-05 01:12:48 INFO  c.n.e.s.aop.ExecutionTimeAspect - com.nhnacademy.edu.springframework.aop.SimpleService.performTask executed in 1005ms
 2024-02-05 01:18:26 INFO  c.n.e.s.aop.ExecutionTimeAspect - com.nhnacademy.edu.springframework.aop.SimpleService.performTask executed in 1006ms
 2024-02-05 01:22:37 INFO  c.n.e.s.aop.ExecutionTimeAspect - com.nhnacademy.edu.springframework.aop.SimpleService.performTask executed in 1005ms
+2024-02-05 01:41:51 INFO  c.n.e.s.aop.ExecutionTimeAspect - com.nhnacademy.edu.springframework.aop.SimpleService.performTask executed in 1002ms
