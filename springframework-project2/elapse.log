@@ -1,0 +1,10 @@
+2월 04, 2024 11:09:17 오후 com.nhnacademy.edu.springframework.aop.ExecutionTimeAspect measureExecutionTime
+정보: com.nhnacademy.edu.springframework.parser.DataParser.parseCsv executed in 7ms
+2월 04, 2024 11:09:17 오후 com.nhnacademy.edu.springframework.aop.ExecutionTimeAspect measureExecutionTime
+정보: com.nhnacademy.edu.springframework.repository.TariffRepository.loadFile executed in 24ms
+2월 04, 2024 11:09:17 오후 com.nhnacademy.edu.springframework.aop.ExecutionTimeAspect measureExecutionTime
+정보: com.nhnacademy.edu.springframework.repository.TariffRepository.findTariffByUsage executed in 1ms
+2월 04, 2024 11:09:17 오후 com.nhnacademy.edu.springframework.aop.ExecutionTimeAspect measureExecutionTime
+정보: com.nhnacademy.edu.springframework.service.WaterTariffService.calculateCharge executed in 3ms
+2월 04, 2024 11:09:17 오후 com.nhnacademy.edu.springframework.aop.ExecutionTimeAspect measureExecutionTime
+정보: com.nhnacademy.edu.springframework.report.ResultReport.printTariffByDesc executed in 1ms
