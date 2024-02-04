@@ -2,6 +2,7 @@ package com.nhnacademy.edu.springframework.repository;
 
 import com.nhnacademy.edu.springframework.annotation.MeasureExecutionTime;
 import com.nhnacademy.edu.springframework.parser.DataParser;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 public class DefaultTariffRepository implements TariffRepository {
 
     private final DataParser dataParser;
+    @Getter
     private List<String[]> tableDatas = new ArrayList<>();
 
     @Autowired
