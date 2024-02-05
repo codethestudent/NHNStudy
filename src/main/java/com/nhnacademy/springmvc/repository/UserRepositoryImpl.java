@@ -6,7 +6,6 @@ import com.nhnacademy.springmvc.exception.UserAlreadyExistsException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-
 public class UserRepositoryImpl implements UserRepository {
     private final Map<String, User> userMap = new HashMap<>();
 
