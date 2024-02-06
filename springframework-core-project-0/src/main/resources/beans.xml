@@ -32,7 +32,7 @@
     <aop:config>
         <aop:aspect id="executionTimeLogger" ref="executionTimeAspect">
             <aop:around method="measureExecutionTime"
-                        pointcut="execution(public * com.nhnacademy.edu.springframework.sender.impl.DoorayMessageSender.sendMessage(..))"/>
+                        pointcut="@annotation(com.nhnacademy.edu.springframework.annotations.MeasureExecutionTime)"/>
         </aop:aspect>
     </aop:config>
     <bean id="executionTimeAspect" class="com.nhnacademy.edu.springframework.aop.ExecutionTimeAspect"/>
