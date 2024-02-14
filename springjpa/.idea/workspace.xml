@@ -4,24 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43dded36-5fc9-4165-bd1b-9efc63dd0452" name="Changes" comment="update">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/AddressRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/CategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/OrderDetailRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/OrderRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/ProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/ReviewRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/ShoppingCartRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/UserRepository.java" afterDir="false" />
+    <list default="true" id="43dded36-5fc9-4165-bd1b-9efc63dd0452" name="Changes" comment="feat: 데이터베이스 테이블 Entity 맵핑 및 Repository interface implementation">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/OrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/OrderDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/ShoppingCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/ShoppingCart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/script/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/script/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/AddressRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/AddressRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/OrderDetailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/OrderDetailRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/OrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/ReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/ReviewRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/ShoppingCartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/ShoppingCartRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../student-step" beforeDir="false" afterPath="$PROJECT_DIR$/../student-step" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +26,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Jsp File" />
         <option value="Interface" />
       </list>
     </option>
@@ -96,7 +90,7 @@
       <option name="presentableId" value="Default" />
       <updated>1707813271405</updated>
       <workItem from="1707813272592" duration="13662000" />
-      <workItem from="1707902652439" duration="5557000" />
+      <workItem from="1707902652439" duration="10005000" />
     </task>
     <task id="LOCAL-00001" summary="java-servlet-jsp-shoppingmall 데이터베이스의 entity 클래스 정의">
       <option name="closed" value="true" />
@@ -114,7 +108,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707830381528</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: 데이터베이스 테이블 Entity 맵핑 및 Repository interface implementation">
+      <option name="closed" value="true" />
+      <created>1707910989326</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1707910989326</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,6 +136,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="java-servlet-jsp-shoppingmall 데이터베이스의 entity 클래스 정의" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="feat: 데이터베이스 테이블 Entity 맵핑 및 Repository interface implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: 데이터베이스 테이블 Entity 맵핑 및 Repository interface implementation" />
   </component>
 </project>
