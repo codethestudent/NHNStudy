@@ -4,7 +4,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+/*
+CREATE TABLE Categories
+(
+    CategoryID   INT auto_increment,
+    CategoryName varchar(50),
 
+    CONSTRAINT pk_Categories PRIMARY KEY (CategoryID)
+);
+ */
 @Entity
 @Table(name = "Categories")
 public class Category {

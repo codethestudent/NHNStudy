@@ -65,10 +65,12 @@ CREATE TABLE OrderDetails
     ProductID int,
     Quantity  int,
     UnitCost  decimal(15),
+    AddressID int,
 
     CONSTRAINT pk_OrderDetails PRIMARY KEY (OrderID, ProductID),
     CONSTRAINT fk_OrderDetails_Orders FOREIGN KEY (OrderID) REFERENCES Orders (OrderID),
-    CONSTRAINT fk_OrderDetails_Products FOREIGN KEY (ProductID) REFERENCES Products (ProductID)
+    CONSTRAINT fk_OrderDetails_Products FOREIGN KEY (ProductID) REFERENCES Products (ProductID),
+    CONSTRAINT fk_OrderDetails_Address FOREIGN KEY (AddressID) REFERENCES Address (AddressID)
 );
 
 CREATE TABLE ShoppingCart

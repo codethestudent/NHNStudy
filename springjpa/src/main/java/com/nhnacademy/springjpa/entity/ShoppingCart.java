@@ -6,6 +6,19 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+/*
+CREATE TABLE ShoppingCart
+(
+    RecordID     int auto_increment,
+    CartID       nvarchar(150),
+    Quantity     int,
+    ProductID    int,
+    DateCreateed Datetime DEFAULT NOW(),
+
+    CONSTRAINT pk_RecordID PRIMARY KEY (RecordID),
+    CONSTRAINT fk_cart_ProductID FOREIGN KEY (ProductID) REFERENCES Products (ProductID)
+);
+ */
 @Entity
 @Getter
 @Setter
@@ -24,6 +37,7 @@ public class ShoppingCart {
     @Column(name = "DateCreateed")
     private LocalDateTime createdAt;
 
-    @Column(name = "ProductID")
-    private int productId;
+    @ManyToOne
+    @JoinColumn(name = "ProductID")
+    private Product product;
 }
