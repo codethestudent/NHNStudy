@@ -1,0 +1,11 @@
+2024-02-05 01:11:27 INFO  c.n.e.s.aop.ExecutionTimeAspect - com.nhnacademy.edu.springframework.aop.SimpleService.performTask executed in 1005ms
+2024-02-05 01:12:48 INFO  c.n.e.s.aop.ExecutionTimeAspect - com.nhnacademy.edu.springframework.aop.SimpleService.performTask executed in 1005ms
+2024-02-05 01:18:26 INFO  c.n.e.s.aop.ExecutionTimeAspect - com.nhnacademy.edu.springframework.aop.SimpleService.performTask executed in 1006ms
+2024-02-05 01:22:37 INFO  c.n.e.s.aop.ExecutionTimeAspect - com.nhnacademy.edu.springframework.aop.SimpleService.performTask executed in 1005ms
+2024-02-05 01:41:51 INFO  c.n.e.s.aop.ExecutionTimeAspect - com.nhnacademy.edu.springframework.aop.SimpleService.performTask executed in 1002ms
+2024-02-05 04:30:45 INFO  c.n.e.s.aop.ExecutionTimeAspect - com.nhnacademy.edu.springframework.parser.DataParser.parseCsv executed in 6ms
+2024-02-05 04:30:45 INFO  c.n.e.s.aop.ExecutionTimeAspect - com.nhnacademy.edu.springframework.repository.TariffRepository.loadFile executed in 16ms
+2024-02-05 04:30:45 INFO  c.n.e.s.aop.ExecutionTimeAspect - com.nhnacademy.edu.springframework.repository.TariffRepository.findTariffByUsage executed in 1ms
+2024-02-05 04:30:45 INFO  c.n.e.s.aop.ExecutionTimeAspect - com.nhnacademy.edu.springframework.service.WaterTariffService.calculateCharge executed in 2ms
+2024-02-05 04:30:45 INFO  c.n.e.s.aop.ExecutionTimeAspect - com.nhnacademy.edu.springframework.report.ResultReport.printTariffByDesc executed in 2ms
+2024-02-05 04:31:13 INFO  c.n.e.s.aop.ExecutionTimeAspect - com.nhnacademy.edu.springframework.aop.SimpleService.performTask executed in 1005ms
