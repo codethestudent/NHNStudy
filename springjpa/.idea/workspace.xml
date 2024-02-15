@@ -9,16 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43dded36-5fc9-4165-bd1b-9efc63dd0452" name="Changes" comment="feat : repositoryCustom">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/domain/ProductNameOnly.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/OrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/OrderDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/script/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/script/schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nhnacademy/springjpa/repository/OrderRepositoryCustomTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nhnacademy/springjpa/repository/OrderRepositoryImplTest.java" afterDir="false" />
+    <list default="true" id="43dded36-5fc9-4165-bd1b-9efc63dd0452" name="Changes" comment="feat : ProductRepository day3 요구사항 수정&#10;OrderRepositoryImpl 구현">
       <change beforePath="$PROJECT_DIR$/../student-step" beforeDir="false" afterPath="$PROJECT_DIR$/../student-step" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -232,7 +223,7 @@
       <workItem from="1707902652439" duration="10036000" />
       <workItem from="1707917024238" duration="147000" />
       <workItem from="1707986021291" duration="3701000" />
-      <workItem from="1707992846047" duration="13799000" />
+      <workItem from="1707992846047" duration="14003000" />
     </task>
     <task id="LOCAL-00001" summary="java-servlet-jsp-shoppingmall 데이터베이스의 entity 클래스 정의">
       <option name="closed" value="true" />
@@ -282,7 +273,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708004821892</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat : ProductRepository day3 요구사항 수정&#10;OrderRepositoryImpl 구현">
+      <option name="closed" value="true" />
+      <created>1708008875530</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1708008875530</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,6 +305,7 @@
     <MESSAGE value="feat: Repository interface methods implementation" />
     <MESSAGE value="fix : entity mapping error fix" />
     <MESSAGE value="feat : repositoryCustom" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat : repositoryCustom" />
+    <MESSAGE value="feat : ProductRepository day3 요구사항 수정&#10;OrderRepositoryImpl 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat : ProductRepository day3 요구사항 수정&#10;OrderRepositoryImpl 구현" />
   </component>
 </project>
