@@ -93,3 +93,4 @@ CREATE TABLE Address
 
     CONSTRAINT fk_Address_User FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
+
