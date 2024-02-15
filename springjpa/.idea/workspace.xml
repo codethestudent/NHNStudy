@@ -9,18 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="43dded36-5fc9-4165-bd1b-9efc63dd0452" name="Changes" comment="fix : entity mapping error fix">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/controller/ProductController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/OrderRepositoryCustom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/OrderRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/nhnacademy/springjpa/repository/OrderRepositoryCustomTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../academy-spring-jpa" beforeDir="false" afterPath="$PROJECT_DIR$/../academy-spring-jpa" afterDir="false" />
+    <list default="true" id="43dded36-5fc9-4165-bd1b-9efc63dd0452" name="Changes" comment="feat : repositoryCustom">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/domain/ProductNameOnly.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/OrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/OrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/OrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/entity/OrderDetail.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nhnacademy/springjpa/repository/ProductRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/script/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/script/schema.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/nhnacademy/springjpa/repository/OrderRepositoryCustomTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nhnacademy/springjpa/repository/OrderRepositoryImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../student-step" beforeDir="false" afterPath="$PROJECT_DIR$/../student-step" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,8 +30,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Jsp File" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -55,24 +53,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.84">
+}]]></component>
+  <component name="RunManager" selected="JUnit.OrderRepositoryImplTest.testGetUserHavingOrderDetailQuantityGreaterThan">
     <configuration name="OrderEntityTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="springjpa" />
       <extension name="coverage">
@@ -85,6 +84,37 @@
       <option name="MAIN_CLASS_NAME" value="com.nhnacademy.springjpa.entity.OrderEntityTest" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderRepositoryImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springjpa" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nhnacademy.springjpa.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.nhnacademy.springjpa.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.nhnacademy.springjpa.repository.OrderRepositoryImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderRepositoryImplTest.testGetUserHavingOrderDetailQuantityGreaterThan" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="springjpa" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nhnacademy.springjpa.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.nhnacademy.springjpa.repository" />
+      <option name="MAIN_CLASS_NAME" value="com.nhnacademy.springjpa.repository.OrderRepositoryImplTest" />
+      <option name="METHOD_NAME" value="testGetUserHavingOrderDetailQuantityGreaterThan" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -177,11 +207,15 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.OrderRepositoryImplTest" />
+      <item itemvalue="JUnit.OrderRepositoryImplTest.testGetUserHavingOrderDetailQuantityGreaterThan" />
       <item itemvalue="JUnit.OrderEntityTest" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.84" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OrderRepositoryImplTest.testGetUserHavingOrderDetailQuantityGreaterThan" />
+        <item itemvalue="JUnit.OrderRepositoryImplTest" />
         <item itemvalue="JUnit.OrderEntityTest" />
       </list>
     </recent_temporary>
@@ -198,7 +232,7 @@
       <workItem from="1707902652439" duration="10036000" />
       <workItem from="1707917024238" duration="147000" />
       <workItem from="1707986021291" duration="3701000" />
-      <workItem from="1707992846047" duration="9675000" />
+      <workItem from="1707992846047" duration="13799000" />
     </task>
     <task id="LOCAL-00001" summary="java-servlet-jsp-shoppingmall 데이터베이스의 entity 클래스 정의">
       <option name="closed" value="true" />
@@ -240,7 +274,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707992678092</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat : repositoryCustom">
+      <option name="closed" value="true" />
+      <created>1708004821892</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1708004821892</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,6 +305,7 @@
     <MESSAGE value="feat: 데이터베이스 테이블 Entity 맵핑 및 Repository interface implementation" />
     <MESSAGE value="feat: Repository interface methods implementation" />
     <MESSAGE value="fix : entity mapping error fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix : entity mapping error fix" />
+    <MESSAGE value="feat : repositoryCustom" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat : repositoryCustom" />
   </component>
 </project>

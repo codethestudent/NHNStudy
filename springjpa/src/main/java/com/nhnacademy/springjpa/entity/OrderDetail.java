@@ -1,8 +1,6 @@
 package com.nhnacademy.springjpa.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,6 +21,8 @@ CREATE TABLE OrderDetails
 );
  */
 @Entity
+@Getter
+@Setter
 @Table(name = "OrderDetails")
 public class OrderDetail {
     @EmbeddedId

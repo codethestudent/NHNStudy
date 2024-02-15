@@ -31,9 +31,7 @@ CREATE TABLE `users`
     `created_at`      datetime     NOT NULL COMMENT '가입일자',
     `latest_login_at` datetime DEFAULT NULL COMMENT '마지막 로그인 일자',
     PRIMARY KEY (`user_id`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_0900_ai_ci COMMENT ='회원';
+);
 
 CREATE TABLE Reviews
 (
@@ -57,6 +55,14 @@ CREATE TABLE Orders
 
     CONSTRAINT pk_Orders PRIMARY KEY (OrderID),
     CONSTRAINT fk_Orders_CustomerID FOREIGN KEY (user_id) REFERENCES users (user_id)
+);
+CREATE TABLE Address
+(
+    AddressID   int auto_increment PRIMARY KEY,
+    AddressName varchar(255) NOT NULL,
+    user_id     varchar(50),
+
+    CONSTRAINT fk_Address_User FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 
 CREATE TABLE OrderDetails
@@ -85,12 +91,20 @@ CREATE TABLE ShoppingCart
     CONSTRAINT fk_cart_ProductID FOREIGN KEY (ProductID) REFERENCES Products (ProductID)
 );
 
-CREATE TABLE Address
-(
-    AddressID   int auto_increment PRIMARY KEY,
-    AddressName varchar(255) NOT NULL,
-    user_id     varchar(50),
+INSERT INTO Categories (CategoryName)
+VALUES ('Electronics'), ('Books');
 
-    CONSTRAINT fk_Address_User FOREIGN KEY (user_id) REFERENCES users (user_id)
-);
+INSERT INTO Products (CategoryID, ModelNumber, ModelName, ProductImage, UnitCost, Description)
+VALUES (1, 'ELEC1234', 'Electronic Gadget', 'image1.jpg', 100.00, 'An electronic gadget description'),
+       (2, 'BOOK1234', 'Book Title', 'image2.jpg', 50.00, 'A book description');
 
+INSERT INTO users (user_id, user_name, user_password, user_birth, user_auth, user_point, created_at)
+VALUES ('user1', 'Test User 1', 'password', '19800101', 'ROLE_USER', 1000, NOW()),
+       ('user2', 'Test User 2', 'password', '19800102', 'ROLE_USER', 2000, NOW());
+
+INSERT INTO Orders (user_id, OrderDate, ShipDate)
+VALUES ('user1', NOW(), NOW()),
+       ('user2', NOW(), NOW());
+INSERT INTO OrderDetails (OrderID, ProductID, Quantity, UnitCost)
+VALUES (1, 1, 10, 100.00), -- ProductID 1 참조
+       (2, 2, 3, 50.00); -- ProductID 2 참조

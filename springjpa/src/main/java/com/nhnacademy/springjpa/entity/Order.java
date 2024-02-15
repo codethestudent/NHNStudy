@@ -1,7 +1,11 @@
 package com.nhnacademy.springjpa.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+
 /*
 CREATE TABLE Orders
 (
@@ -15,6 +19,8 @@ CREATE TABLE Orders
 );
  */
 @Entity
+@Getter
+@Setter
 @Table(name = "Orders")
 public class Order {
     @Id
