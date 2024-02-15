@@ -27,12 +27,12 @@ CREATE TABLE OrderDetails
 public class OrderDetail {
     @EmbeddedId
     private Pk id;
-    @MapsId
+    @MapsId("orderId")
     @OneToOne
     @JoinColumn(name = "OrderID")
     private Order order;
 
-    @MapsId
+    @MapsId("productId")
     @ManyToOne
     @JoinColumn(name = "ProductID")
     private Product product;

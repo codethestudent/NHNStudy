@@ -1,9 +1,7 @@
 package com.nhnacademy.springjpa.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 /*
 CREATE TABLE Categories
 (
@@ -18,6 +16,7 @@ CREATE TABLE Categories
 public class Category {
     @Id
     @Column(name = "CategoryID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int categoryId;
     @Column(name = "CategoryName")
     private String categoryName;
