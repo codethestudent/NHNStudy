@@ -1,8 +1,13 @@
 package com.nhnacademy.certificateissuance.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "certificate_issue")
 public class CertificateIssue {

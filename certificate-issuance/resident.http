@@ -1,0 +1,25 @@
+POST http://localhost:8080/residents
+Content-Type: application/json
+
+{
+  "name": "하준영2",
+  "residentRegistrationNumber": "990319-1234567",
+  "genderCode": "남",
+  "birthDate": "19990319103000",
+  "birthPlaceCode": "병원",
+  "registrationBaseAddress": "123 MyStreet, MyCity, MyState"
+}
+
+###
+
+PUT http://localhost:8080/residents/8
+Content-Type: application/json
+
+{
+  "name": "하준영",
+  "residentRegistrationNumber": "990319-1234567",
+  "genderCode": "남",
+  "birthDate": "19990319103000",
+  "birthPlaceCode": "병원",
+  "registrationBaseAddress": "123 MyStreet, MyCity, MyState"
+}

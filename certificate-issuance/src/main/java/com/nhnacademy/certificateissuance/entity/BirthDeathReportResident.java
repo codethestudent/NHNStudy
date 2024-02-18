@@ -1,15 +1,15 @@
 package com.nhnacademy.certificateissuance.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "birth_death_report_resident")
+@Getter
+@Setter
 public class BirthDeathReportResident {
     @EmbeddedId
     private Pk pk;
@@ -19,11 +19,13 @@ public class BirthDeathReportResident {
     @JoinColumn(name = "resident_serial_number")
     private Resident resident;
 
-    @Column(name = "report_resident_serial_number")
-    private int reportResidentSerialNumber;
+    @ManyToOne
+    @MapsId("reportResidentSerialNumber")
+    @JoinColumn(name = "report_resident_serial_number")
+    private Resident reportResident;
 
     @Column(name = "birth_death_report_date")
-    private LocalDateTime birthDeathReportDate;
+    private LocalDate birthDeathReportDate;
 
     @Column(name = "birth_report_qualifications_code")
     private String birthReportQualificationsCode;
@@ -47,5 +49,8 @@ public class BirthDeathReportResident {
 
         @Column(name = "birth_death_type_code")
         private String birthDeathTypeCode;
+
+        @Column(name = "report_resident_serial_number")
+        private int reportResidentSerialNumber;
     }
 }

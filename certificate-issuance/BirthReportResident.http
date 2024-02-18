@@ -1,0 +1,31 @@
+POST http://localhost:8080/residents/8/birth
+Content-Type: application/json
+
+{
+  "birthDeathTypeCode" : "출생",
+  "reportResidentSerialNumber" : "1",
+  "birthDeathReportDate" : "19990319",
+  "birthReportQualificationCode" : "부",
+  "deathReportQualificationCode" : "NULL",
+  "emailAddress" : "asdf@asdf.com",
+  "phoneNumber" : "010-1234-1234"
+}
+
+###
+
+DELETE http://localhost:8080/residents/1/birth/8
+
+###
+
+PUT http://localhost:8080/residents/1/birth/8
+Content-Type: application/json
+
+{
+  "birthDeathTypeCode" : "출생",
+  "reportResidentSerialNumber" : "1",
+  "birthDeathReportDate" : "19990319",
+  "birthReportQualificationCode" : "부",
+  "deathReportQualificationCode" : "NULL",
+  "emailAddress" : "asdasdf@asdf.com",
+  "phoneNumber" : "010-1234-3333"
+}

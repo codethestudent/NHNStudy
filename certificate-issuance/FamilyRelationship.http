@@ -1,0 +1,20 @@
+POST http://localhost:8080/residents/9/relationship
+Content-Type: application/json
+
+{
+  "familySerialNumber": 1,
+  "relationShip": "부"
+}
+
+###
+
+PUT http://localhost:8080/residents/8/relationship/1
+Content-Type: application/json
+
+{
+    "relationShip": "모"
+}
+
+###
+
+DELETE http://localhost:8080/residents/8/relationship/1

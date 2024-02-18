@@ -1,13 +1,13 @@
 package com.nhnacademy.certificateissuance.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+@Setter
+@Getter
 @Entity
 @Table(name = "household_composition_resident")
 public class HouseholdCompositionResident {
@@ -18,7 +18,7 @@ public class HouseholdCompositionResident {
     @JoinColumn(name = "household_serial_number")
     private Household household;
 
-    @ManyToOne
+    @OneToOne
     @MapsId("residentSerialNumber")
     @JoinColumn(name = "resident_serial_number")
     private Resident resident;

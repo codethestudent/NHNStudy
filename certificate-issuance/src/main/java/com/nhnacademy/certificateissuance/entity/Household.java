@@ -1,10 +1,15 @@
 package com.nhnacademy.certificateissuance.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "household")
 public class Household {
@@ -12,7 +17,7 @@ public class Household {
     @Column(name = "household_serial_number")
     private int householdSerialNumber;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "household_resident_serial_number")
     private Resident resident;
 
@@ -25,8 +30,4 @@ public class Household {
     @Column(name = "current_house_movement_address")
     private String currentHouseMovementAddress;
 
-    @OneToMany(mappedBy = "household")
-    private Set<HouseholdCompositionResident> householdCompositionResidentSet = new HashSet<>();
-    @OneToMany(mappedBy = "household")
-    private Set<HouseholdMovementAddress> householdMovementAddresses = new HashSet<>();
 }
