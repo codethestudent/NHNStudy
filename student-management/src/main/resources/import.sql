@@ -1,0 +1,1 @@
+insert into User(userId, userName, userPassword) values ('admin' , 'admin' , '1234');
