@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="ko">
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Resident Register</title>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 10px;
+            }
+        </style>
     </head>
     <body>
-
+        <div sec:authorize="isAuthenticated()">
+            <h2>세대 구성원 목록</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>세대 일련번호</th>
+                        <th>주민 일련번호</th>
+                        <th>이름</th>
+                        <th>관계</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 여기서 본인 포함한 세대구성원 출력-->
+                    <tr th:each="householdCompositionResident : ${household_composition_residents}">
+                        <td th:text="${householdCompositionResident.pk.householdSerialNumber}">세대 일련번호</td>
+                        <td th:text="${householdCompositionResident.pk.residentSerialNumber}">주민 일련번호</td>
+                        <td th:text="${householdCompositionResident.resident.name}">이름</td>
+                        <td th:text="${householdCompositionResident.householdRelationshipCode}">관계</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div sec:authorize="!isAuthenticated()">
+            <a href="/redirect-index">Login</a>
+        </div>
     </body>
 </html>

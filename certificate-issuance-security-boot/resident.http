@@ -1,0 +1,14 @@
+POST http://localhost:8080/residents
+Content-Type: application/json
+
+{
+  "name": "하준영",
+  "residentRegistrationNumber": "990319-1234567",
+  "genderCode": "M",
+  "birthDate": "19990319000000",
+  "birthPlaceCode": "Changwon",
+  "registrationBaseAddress": "Changwon",
+  "id": "asdf",
+  "password": "asdf",
+  "email": "asdf@gmail.com"
+}
