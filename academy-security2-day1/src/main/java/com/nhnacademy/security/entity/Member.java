@@ -28,7 +28,6 @@ public class Member {
     @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
     private Authority authority;
 
-
     public Member() {
         // nothing
     }
@@ -41,5 +40,4 @@ public class Member {
 
         return member;
     }
-
 }

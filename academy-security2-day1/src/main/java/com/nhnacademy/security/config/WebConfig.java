@@ -13,8 +13,10 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/private-project/**").setViewName("private-project");
         registry.addViewController("/public-project/**").setViewName("public-project");
         registry.addViewController("/profile").setViewName("profile");
-        registry.addViewController("/login/process").setViewName("login");
+        registry.addViewController("/login").setViewName("login");
         registry.addViewController("/login/logout").setViewName("logout");
+        registry.addRedirectViewController("/redirect-index", "/");
+
     }
 
 }

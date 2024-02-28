@@ -1,15 +1,26 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8" />
-    <title>Home</title>
-</head>
-<body>
-    <a href="/admin/manage">Admin Tool</a><br />
-    <a href="/private-project/1">Private Project</a><br />
-    <a href="/public-project/2">Public Project</a><br />
-    <a href="/profile">Profile</a><br />
-    <a href="/login/process">Login</a><br />
-    <a href="/login/logout">Logout</a><br />
-</body>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Home</title>
+    </head>
+    <body>
+        <h1>Home</h1>
+
+        <th:block th:include="fragments/heading" />
+
+        <ul>
+            <li sec:authorize="hasAuthority('ROLE_ADMIN')">
+                <a href="/admin/manage">Admin Tool</a>
+            </li>
+            <li sec:authorize="hasAnyAuthority('ROLE_ADMIN', 'ROLE_MEMBER')">
+                <a href="/private-project/1">Private Project</a>
+            </li>
+            <li sec:authorize-url="/project/2">
+                <a href="/public-project/2">Public Project</a>
+            </li>
+        </ul>
+    </body>
 </html>
