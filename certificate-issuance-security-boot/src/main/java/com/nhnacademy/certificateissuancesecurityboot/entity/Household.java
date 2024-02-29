@@ -29,10 +29,16 @@ public class Household {
     @Column(name = "current_house_movement_address")
     private String currentHouseMovementAddress;
 
-    public Household(Resident resident, LocalDateTime householdCompositionDate, String householdCompositionReasonCode, String currentHouseMovementAddress) {
+    public Household(Resident resident,
+                     LocalDateTime householdCompositionDate,
+                     String householdCompositionReasonCode,
+                     String currentHouseMovementAddress) {
         this.resident = resident;
         this.householdCompositionDate = householdCompositionDate;
         this.householdCompositionReasonCode = householdCompositionReasonCode;
         this.currentHouseMovementAddress = currentHouseMovementAddress;
+    }
+
+    public Household() {
     }
 }

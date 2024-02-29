@@ -1,0 +1,13 @@
+POST http://localhost:8080/household
+Content-Type: application/json
+
+{
+  "residentSerialNumber": 1,
+  "householdCompositionReasonCode": "family",
+  "householdCompositionDate": "19990319000000",
+  "currentHouseMovementAddress": "내동1142-1"
+}
+
+###
+
+DELETE http://localhost:8080/household/1

@@ -8,10 +8,10 @@ import com.nhnacademy.certificateissuancesecurityboot.repository.HouseholdCompos
 import com.nhnacademy.certificateissuancesecurityboot.repository.HouseholdRepository;
 import com.nhnacademy.certificateissuancesecurityboot.repository.ResidentRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/household")
@@ -34,4 +34,17 @@ public class HouseholdController {
 
         return householdRepository.save(household);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteHousehold(@PathVariable int id) {
+        Optional<Household> household = householdRepository.findById(id);
+        if (household.isEmpty()) {
+            return ResponseEntity.badRequest().body("can't find household id : " + id);
+        }
+        householdRepository.delete(household.get());
+        return ResponseEntity.ok().body("ok");
+    }
+
+
+
 }
