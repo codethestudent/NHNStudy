@@ -1,5 +1,7 @@
 package com.nhnacademy.certificateissuancesecurityboot.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -59,8 +61,10 @@ public class Resident {
     private String email;
 
     @OneToOne(mappedBy = "resident")
+    @JsonBackReference
     private Household household;
 
     @OneToOne(mappedBy = "resident")
+    @JsonBackReference
     private HouseholdCompositionResident householdCompositionResident;
 }

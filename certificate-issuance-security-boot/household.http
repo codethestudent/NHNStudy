@@ -11,3 +11,55 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:8080/household/1
+
+###
+
+POST http://localhost:8080/household/composition
+Content-Type: application/json
+
+{
+  "householdSerialNumber": 1,
+  "residentSerialNumber": 1,
+  "reportDate": "19990319000000",
+  "householdRelationshipCode": "family",
+  "householdCompositionChangeReasonCode": "family"
+}
+
+###
+
+POST http://localhost:8080/household/composition
+Content-Type: application/json
+
+{
+  "householdSerialNumber": 1,
+  "residentSerialNumber": 2,
+  "reportDate": "20050204000000",
+  "householdRelationshipCode": "family",
+  "householdCompositionChangeReasonCode": "family"
+}
+
+###
+
+POST http://localhost:8080/household/composition
+Content-Type: application/json
+
+{
+  "householdSerialNumber": 1,
+  "residentSerialNumber": 3,
+  "reportDate": "20050204000000",
+  "householdRelationshipCode": "동거인",
+  "householdCompositionChangeReasonCode": "동거인"
+}
+
+###
+
+POST http://localhost:8080/household/composition
+Content-Type: application/json
+
+{
+  "householdSerialNumber": 1,
+  "residentSerialNumber": 4,
+  "reportDate": "20050204000000",
+  "householdRelationshipCode": "동거인",
+  "householdCompositionChangeReasonCode": "동거인"
+}

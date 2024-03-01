@@ -1,5 +1,7 @@
 package com.nhnacademy.certificateissuancesecurityboot.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,6 +23,7 @@ public class HouseholdCompositionResident {
     @OneToOne
     @MapsId("residentSerialNumber")
     @JoinColumn(name = "resident_serial_number")
+    @JsonBackReference
     private Resident resident;
 
     @Column(name = "report_date")
@@ -29,6 +32,23 @@ public class HouseholdCompositionResident {
     private String householdRelationshipCode;
     @Column(name = "household_composition_change_reason_code")
     private String householdCompositionChangeReasonCode;
+
+    public HouseholdCompositionResident(Pk pk,
+                                        Household household,
+                                        Resident resident,
+                                        LocalDateTime reportDate,
+                                        String householdRelationshipCode,
+                                        String householdCompositionChangeReasonCode) {
+        this.pk = pk;
+        this.household = household;
+        this.resident = resident;
+        this.reportDate = reportDate;
+        this.householdRelationshipCode = householdRelationshipCode;
+        this.householdCompositionChangeReasonCode = householdCompositionChangeReasonCode;
+    }
+
+    public HouseholdCompositionResident() {
+    }
 
     @NoArgsConstructor
     @AllArgsConstructor

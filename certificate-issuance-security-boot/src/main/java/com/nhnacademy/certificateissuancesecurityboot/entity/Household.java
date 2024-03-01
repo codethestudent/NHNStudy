@@ -1,5 +1,7 @@
 package com.nhnacademy.certificateissuancesecurityboot.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +20,7 @@ public class Household {
 
     @OneToOne
     @JoinColumn(name = "household_resident_serial_number")
+    @JsonBackReference
     private Resident resident;
 
     @Column(name = "household_composition_date")

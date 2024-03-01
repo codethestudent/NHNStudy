@@ -10,6 +10,7 @@
                 border: 1px solid black;
                 border-collapse: collapse;
             }
+
             th, td {
                 padding: 10px;
             }
@@ -28,15 +29,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- 여기서 본인 포함한 세대구성원 출력-->
                     <tr th:each="householdCompositionResident : ${household_composition_residents}">
                         <td th:text="${householdCompositionResident.pk.householdSerialNumber}">세대 일련번호</td>
                         <td th:text="${householdCompositionResident.pk.residentSerialNumber}">주민 일련번호</td>
                         <td th:text="${householdCompositionResident.resident.name}">이름</td>
-                        <td th:text="${householdCompositionResident.householdRelationshipCode}">관계</td>
+                        <td th:text="${householdCompositionResident.getResident().getId() == id ? '본인' : householdCompositionResident.householdRelationshipCode}">관계</td>
                     </tr>
                 </tbody>
             </table>
+            <a href="/logout">Logout</a>
         </div>
         <div sec:authorize="!isAuthenticated()">
             <a href="/redirect-index">Login</a>

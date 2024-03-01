@@ -1,9 +1,11 @@
 package com.nhnacademy.certificateissuancesecurityboot.config;
 
 import com.nhnacademy.certificateissuancesecurityboot.auth.CustomLoginSuccessHandler;
+import com.nhnacademy.certificateissuancesecurityboot.auth.CustomLogoutSuccessHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,6 +19,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests()
+                .antMatchers("/home/**").authenticated()
                 .antMatchers("/redirect-index").authenticated()
                 .anyRequest().permitAll()
                 .and();
@@ -26,7 +29,13 @@ public class SecurityConfig {
                 .loginProcessingUrl("/login")
                 .usernameParameter("id")
                 .passwordParameter("password")
-                .successHandler(new CustomLoginSuccessHandler());
+                .successHandler(loginSuccessHandler(null));
+
+        http.logout()
+                .logoutUrl("/logout")
+                .invalidateHttpSession(true)
+                .deleteCookies("SESSION")
+                .logoutSuccessHandler(logoutSuccessHandler(null));
 
         http.csrf().disable();
 
@@ -36,5 +45,15 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public CustomLoginSuccessHandler loginSuccessHandler(RedisTemplate<Object, Object> redisTemplate) {
+        return new CustomLoginSuccessHandler(redisTemplate);
+    }
+
+    @Bean
+    public CustomLogoutSuccessHandler logoutSuccessHandler(RedisTemplate<Object, Object> redisTemplate) {
+        return new CustomLogoutSuccessHandler(redisTemplate);
     }
 }

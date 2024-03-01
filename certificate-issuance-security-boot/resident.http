@@ -4,11 +4,62 @@ Content-Type: application/json
 {
   "name": "하준영",
   "residentRegistrationNumber": "990319-1234567",
-  "genderCode": "M",
-  "birthDate": "19990319000000",
+  "genderCode": "m",
+  "birthDate": "20010302000000",
   "birthPlaceCode": "Changwon",
   "registrationBaseAddress": "Changwon",
   "id": "asdf",
   "password": "asdf",
   "email": "asdf@gmail.com"
+}
+
+###
+
+POST http://localhost:8080/residents
+Content-Type: application/json
+
+{
+  "name": "하도헌",
+  "residentRegistrationNumber": "050204-1234567",
+  "genderCode": "m",
+  "birthDate": "20010302000000",
+  "birthPlaceCode": "changwon",
+  "registrationBaseAddress": "changwon",
+  "id": "asdfasdf",
+  "password": "asdf",
+  "email": "asdfasdf@gmail.com"
+}
+
+###
+
+POST http://localhost:8080/residents
+Content-Type: application/json
+
+{
+  "name": "박미정",
+  "residentRegistrationNumber": "010302-1234567",
+  "genderCode": "F",
+  "birthDate": "20010302000000",
+  "birthPlaceCode": "Gochang",
+  "registrationBaseAddress": "Gochang",
+  "id": "asdfasdfasdf",
+  "password": "asdf",
+  "email": "asdfasdfasdf@gmail.com"
+}
+
+###
+
+POST http://localhost:8080/residents
+Content-Type: application/json
+
+{
+  "name": "흰둥이",
+  "residentRegistrationNumber": "110302-1111111",
+  "genderCode": "F",
+  "birthDate": "20110302000000",
+  "birthPlaceCode": "Gochang",
+  "registrationBaseAddress": "Gochang",
+  "id": "codethestudent",
+  "password": "asdf",
+  "email": "hjun303@gnu.ac.kr"
 }

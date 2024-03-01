@@ -1,5 +1,6 @@
 package com.nhnacademy.certificateissuancesecurityboot.controller;
 
+import com.nhnacademy.certificateissuancesecurityboot.domain.HouseholdCompositionResidentDTO;
 import com.nhnacademy.certificateissuancesecurityboot.domain.HouseholdDto;
 import com.nhnacademy.certificateissuancesecurityboot.entity.Household;
 import com.nhnacademy.certificateissuancesecurityboot.entity.HouseholdCompositionResident;
@@ -11,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
+import java.util.Objects;
 import java.util.Optional;
 
 @RestController
@@ -45,6 +48,27 @@ public class HouseholdController {
         return ResponseEntity.ok().body("ok");
     }
 
+    // 세대구성주민
+    @PostMapping("/composition")
+    public HouseholdCompositionResident registerHouseholdCompositionResident(@RequestBody HouseholdCompositionResidentDTO householdCompositionResidentDTO) {
+        Optional<Household> household = householdRepository.findById(householdCompositionResidentDTO.getHouseholdSerialNumber());
+        Resident resident = residentRepository.findByResidentSerialNumber(householdCompositionResidentDTO.getResidentSerialNumber());
 
-
+        if (household.isEmpty() || Objects.isNull(resident)) {
+            throw new EntityNotFoundException("household empty? : " + household.isEmpty() + "resident null? : " + resident);
+        }
+        HouseholdCompositionResident.Pk pk = new HouseholdCompositionResident.Pk(
+                household.get().getHouseholdSerialNumber(),
+                resident.getResidentSerialNumber()
+        );
+        HouseholdCompositionResident householdCompositionResident = new HouseholdCompositionResident(
+                pk,
+                household.get(),
+                resident,
+                householdCompositionResidentDTO.getReportDate(),
+                householdCompositionResidentDTO.getHouseholdRelationshipCode(),
+                householdCompositionResidentDTO.getHouseholdCompositionChangeReasonCode()
+        );
+        return householdCompositionResidentRepository.save(householdCompositionResident);
+    }
 }
