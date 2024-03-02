@@ -10,4 +10,6 @@ public interface ResidentService {
     Resident updateResident(int serialNumber, ResidentRegisterDto residentRegisterDto);
 
     Resident getResident(String id);
+
+    Resident getResidentByEmail(String email);
 }

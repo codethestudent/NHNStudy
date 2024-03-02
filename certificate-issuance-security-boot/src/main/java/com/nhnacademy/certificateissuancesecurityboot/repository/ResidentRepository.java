@@ -11,4 +11,6 @@ public interface ResidentRepository extends JpaRepository<Resident, Integer>, Re
     List<Resident> findAllByRegistrationBaseAddress(String registrationAddress);
 
     Resident findById(String id);
+
+    Resident findByEmail(String email);
 }

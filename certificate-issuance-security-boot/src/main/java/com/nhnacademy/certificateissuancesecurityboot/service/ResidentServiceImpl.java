@@ -41,4 +41,13 @@ public class ResidentServiceImpl implements ResidentService {
         }
         return resident;
     }
+
+    @Override
+    public Resident getResidentByEmail(String email) {
+        Resident resident = residentRepository.findByEmail(email);
+        if (Objects.isNull(resident)) {
+            throw new EntityNotFoundException(email + " matching email not found");
+        }
+        return null;
+    }
 }

@@ -3,6 +3,8 @@ package com.nhnacademy.certificateissuancesecurityboot.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nhnacademy.certificateissuancesecurityboot.entity.Resident;
+import com.nhnacademy.certificateissuancesecurityboot.service.ResidentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -12,15 +14,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
@@ -30,6 +28,7 @@ import java.util.*;
 public class OAuth2Controller {
 
     private final RedisTemplate<Object, Object> redisTemplate;
+    private final ResidentService residentService;
     private final RestTemplate restTemplate = new RestTemplate();
     private final String clientId = "9a9aa23a0e42cf87eff4";
     private final String redirectUri = "http://localhost:8080/login/oauth2/code/github";
@@ -72,30 +71,46 @@ public class OAuth2Controller {
                 entity,
                 String.class
         );
-        // 응답에서 사용자 정보(JSON) 파싱
-        String responseBody1 = userInfoResponse.getBody();
-        log.warn("id : " + responseBody1);
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        // JSON 문자열을 JsonNode 객체로 파싱
-        JsonNode jsonNode = objectMapper.readTree(responseBody1);
-
-        // 특정 키의 값을 가져오기
-        String specificValue = jsonNode.get("login").asText();
         String sessionId = UUID.randomUUID().toString();
-        redisTemplate.opsForHash().put(sessionId, "id", specificValue);
-        redisTemplate.opsForHash().put(sessionId, "authority", "ROLE_USER");
-        Cookie cookie = new Cookie("SESSION", sessionId);
-        cookie.setMaxAge(259200);
-        response.addCookie(cookie);
-// GitHub 사용자 정보를 바탕으로 Authentication 객체 생성
-        Authentication authentication = new UsernamePasswordAuthenticationToken(
-                specificValue, null, Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
+        String specificValue = getSpecificValueFromResponse(userInfoResponse, "email");
+        if (Objects.nonNull(specificValue)) {
+            Resident resident = residentService.getResidentByEmail(specificValue);
+            Cookie cookie = saveRedisAndGetCookie(sessionId, resident.getId());
+            response.addCookie(cookie);
+            return "redirect:/home";
+        }
 
-// SecurityContext에 Authentication 객체 저장
+        specificValue = getSpecificValueFromResponse(userInfoResponse, "login");
+        Cookie cookie = saveRedisAndGetCookie(sessionId, specificValue);
+        response.addCookie(cookie);
+        // GitHub 사용자 정보를 바탕으로 Authentication 객체 생성
+        Authentication authentication = new UsernamePasswordAuthenticationToken(
+                specificValue,
+                null,
+                Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))
+        );
+
+        // SecurityContext에 Authentication 객체 저장
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         log.warn((String) redisTemplate.opsForHash().get(sessionId, "id"));
         return "redirect:/home";
+    }
+
+    private String getSpecificValueFromResponse(ResponseEntity<String> responseEntity, String name) throws JsonProcessingException {
+        String responseString = responseEntity.getBody();
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode jsonNode = objectMapper.readTree(responseString);
+
+        return jsonNode.get(name).asText();
+    }
+
+    private Cookie saveRedisAndGetCookie(String sessionId, String id) {
+        redisTemplate.opsForHash().put(sessionId, "id", id);
+        redisTemplate.opsForHash().put(sessionId, "authority", "ROLE_USER");
+        Cookie cookie = new Cookie("SESSION", sessionId);
+        cookie.setMaxAge(259200);
+        cookie.setPath("/");
+        return cookie;
     }
 }
