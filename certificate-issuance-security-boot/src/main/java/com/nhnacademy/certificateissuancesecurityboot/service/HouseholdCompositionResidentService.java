@@ -3,6 +3,9 @@ package com.nhnacademy.certificateissuancesecurityboot.service;
 import com.nhnacademy.certificateissuancesecurityboot.entity.HouseholdCompositionResident;
 import com.nhnacademy.certificateissuancesecurityboot.repository.HouseholdCompositionResidentRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -15,13 +18,9 @@ public class HouseholdCompositionResidentService {
 
     private final HouseholdCompositionResidentRepository householdCompositionResidentRepository;
 
-    public List<HouseholdCompositionResident> getHouseholdCompositionResidents(int householdSerialNumber) {
-        List<HouseholdCompositionResident> householdCompositionResidents = householdCompositionResidentRepository.findByPk_HouseholdSerialNumber(householdSerialNumber);
-        if (householdCompositionResidents.isEmpty()) {
-            throw new EntityNotFoundException("household serial number: " + householdSerialNumber + " not found");
-        } else {
-            return householdCompositionResidents;
-        }
+    public Page<HouseholdCompositionResident> getHouseholdCompositionResidents(int householdSerialNumber, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return householdCompositionResidentRepository.findByPk_HouseholdSerialNumber(householdSerialNumber, pageable);
     }
 
     public HouseholdCompositionResident getHouseholdCompositionResident(int residentSerialNumber) {

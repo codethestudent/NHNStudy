@@ -14,6 +14,16 @@
             th, td {
                 padding: 10px;
             }
+
+            ul.pagination {
+                list-style: none;
+                padding: 0;
+            }
+
+            ul.pagination li {
+                display: inline;
+                margin-right: 5px;
+            }
         </style>
     </head>
     <body>
@@ -26,17 +36,39 @@
                         <th>주민 일련번호</th>
                         <th>이름</th>
                         <th>관계</th>
+                        <th>주민등록등본</th>
+                        <th>가족관계증명서</th>
+                        <th>출생신고서</th>
+                        <th>사망신고서</th>
+                        <th>발급목록</th>
+                        <th>삭제</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="householdCompositionResident : ${household_composition_residents}">
+                    <tr th:each="householdCompositionResident : ${householdCompositionResidents}">
                         <td th:text="${householdCompositionResident.pk.householdSerialNumber}">세대 일련번호</td>
                         <td th:text="${householdCompositionResident.pk.residentSerialNumber}">주민 일련번호</td>
                         <td th:text="${householdCompositionResident.resident.name}">이름</td>
-                        <td th:text="${householdCompositionResident.getResident().getId() == id ? '본인' : householdCompositionResident.householdRelationshipCode}">관계</td>
+                        <td th:text="${householdCompositionResident.getResident().getId() == id ? '본인' : householdCompositionResident.householdRelationshipCode}">
+                            관계
+                        </td>
+                        <td><a href="/resident-register">주민등록등본</a></td>
+                        <td><a href="/resident-register">가족관계증명서</a></td>
+                        <td><a href="/resident-register">출생신고서</a></td>
+                        <td><a href="/resident-register">사망신고서</a></td>
+                        <td><a href="/resident-register">발급목록</a></td>
+                        <td><input type="checkbox"
+                                   th:name="'delete_' + ${householdCompositionResident.pk.residentSerialNumber}"/></td>
                     </tr>
                 </tbody>
             </table>
+            <div>
+                <ul class="pagination">
+                    <li th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+                        <a th:href="@{/home(page=${i})}" th:text="${i + 1}">Page number</a>
+                    </li>
+                </ul>
+            </div>
             <a href="/logout">Logout</a>
         </div>
         <div sec:authorize="!isAuthenticated()">

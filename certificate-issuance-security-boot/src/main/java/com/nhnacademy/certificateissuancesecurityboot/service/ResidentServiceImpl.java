@@ -48,6 +48,6 @@ public class ResidentServiceImpl implements ResidentService {
         if (Objects.isNull(resident)) {
             throw new EntityNotFoundException(email + " matching email not found");
         }
-        return null;
+        return resident;
     }
 }

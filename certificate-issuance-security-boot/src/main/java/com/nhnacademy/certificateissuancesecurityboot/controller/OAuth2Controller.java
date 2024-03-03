@@ -61,9 +61,8 @@ public class OAuth2Controller {
         String[] accessToken2 = accessToken1[0].split("=");
         log.warn(accessToken2[1]);
 
-        // 액세스 토큰을 사용하여 GitHub 사용자 정보 요청
         HttpHeaders userInfoHeader = new HttpHeaders();
-        userInfoHeader.set("Authorization", "token " + accessToken2[1]); // 액세스 토큰 사용
+        userInfoHeader.set("Authorization", "token " + accessToken2[1]);
         HttpEntity<String> entity = new HttpEntity<>("parameters", userInfoHeader);
         ResponseEntity<String> userInfoResponse = restTemplate.exchange(
                 "https://api.github.com/user",
@@ -73,26 +72,23 @@ public class OAuth2Controller {
         );
         String sessionId = UUID.randomUUID().toString();
         String specificValue = getSpecificValueFromResponse(userInfoResponse, "email");
-        if (Objects.nonNull(specificValue)) {
+        Cookie cookie;
+        log.warn(specificValue);
+        if (Objects.nonNull(residentService.getResidentByEmail(specificValue))) {
             Resident resident = residentService.getResidentByEmail(specificValue);
-            Cookie cookie = saveRedisAndGetCookie(sessionId, resident.getId());
-            response.addCookie(cookie);
-            return "redirect:/home";
+            cookie = saveRedisAndGetCookie(sessionId, resident.getId());
+            log.warn("ㅇㅕ기 실행됨");
+        } else {
+            return "redirect:/logout";
         }
-
-        specificValue = getSpecificValueFromResponse(userInfoResponse, "login");
-        Cookie cookie = saveRedisAndGetCookie(sessionId, specificValue);
         response.addCookie(cookie);
-        // GitHub 사용자 정보를 바탕으로 Authentication 객체 생성
         Authentication authentication = new UsernamePasswordAuthenticationToken(
                 specificValue,
                 null,
                 Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))
         );
 
-        // SecurityContext에 Authentication 객체 저장
         SecurityContextHolder.getContext().setAuthentication(authentication);
-
         log.warn((String) redisTemplate.opsForHash().get(sessionId, "id"));
         return "redirect:/home";
     }

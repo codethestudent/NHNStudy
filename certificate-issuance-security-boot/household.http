@@ -19,7 +19,7 @@ Content-Type: application/json
 
 {
   "householdSerialNumber": 1,
-  "residentSerialNumber": 1,
+  "residentSerialNumber": 8,
   "reportDate": "19990319000000",
   "householdRelationshipCode": "family",
   "householdCompositionChangeReasonCode": "family"

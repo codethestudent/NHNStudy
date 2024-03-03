@@ -8,9 +8,9 @@ Content-Type: application/json
   "birthDate": "20010302000000",
   "birthPlaceCode": "Changwon",
   "registrationBaseAddress": "Changwon",
-  "id": "asdf",
+  "id": "asdfasdfasdf",
   "password": "asdf",
-  "email": "asdf@gmail.com"
+  "email": "asdfasdfasdf@gmail.com"
 }
 
 ###

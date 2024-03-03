@@ -9,7 +9,7 @@ public class CookieUtils {
         Cookie[] cookies = request.getCookies();
 
         if (cookies == null) {
-            return null; // 쿠키가 없으면 null 반환
+            return null;
         }
 
         return Arrays.stream(cookies)
