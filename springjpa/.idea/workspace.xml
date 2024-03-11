@@ -10,7 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43dded36-5fc9-4165-bd1b-9efc63dd0452" name="Changes" comment="feat : ProductRepository day3 요구사항 수정&#10;OrderRepositoryImpl 구현">
-      <change beforePath="$PROJECT_DIR$/../student-step" beforeDir="false" afterPath="$PROJECT_DIR$/../student-step" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../springframework-project2/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../springframework-project2/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,6 +226,7 @@
       <workItem from="1707986021291" duration="3701000" />
       <workItem from="1707992846047" duration="14003000" />
       <workItem from="1708043299482" duration="432000" />
+      <workItem from="1709992936082" duration="2023000" />
     </task>
     <task id="LOCAL-00001" summary="java-servlet-jsp-shoppingmall 데이터베이스의 entity 클래스 정의">
       <option name="closed" value="true" />
