@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <script>
+            // window.addEventListener("DOMContentLoaded", function () {
+            //     const h1Array = document.getElementsByTagName("h1");
+            //     alert(h1Array.length);
+            //     for (let i = 0; i < h1Array.length; i++) {
+            //         console.log(h1Array[i]);
+            //     }
+            //
+            //     const titleClassArray = document.getElementsByClassName("title")
+            //     for (let i = 0; i < titleClassArray.length; i++) {
+            //         console.log(titleClassArray[i]);
+            //     }
+            // })
+            // 아래 두개가 같은 것임
+            // window.addEventListener("DOMContentLoaded", function () {
+            // });
+            // const init = function () {
+            //
+            // }
+            // window.addEventListener("DOMContentLoaded", init)
+            window.addEventListener("DOMContentLoaded", function () {
+                // const myButton = document.querySelector("#myButton");
+                // myButton.addEventListener("click", function () {
+                //     alertMessage("button clicked");
+                // });
+            });
+            // 그냥 버튼만 눌렀을떈
+            const registerBtn = document.querySelector("#registerBtn");
+            registerBtn.addEventListener("click", function () {
+                const userId = document.querySelector("#userId");
+                if (userId.value == "") {
+                    alert("아이디를 입력해주세요 !");
+                    userId.focus();
+                    return;
+                }
+                const myform = document.getElementById("myform");
+                myform.submit();
+            });
+
+            // 서브밋을 할떄
+            const myform = document.getElementById("myform");
+            myform.addEventListener("submit", function () {
+                const userId = document.querySelector("#userId");
+                if (userId.value == "") {
+                    alert("아이디를 입력해주세요 !");
+                    userId.focus();
+                    return;
+                }
+
+            });
+            function alertMessage(msg) {
+                alert(msg);
+            }
+        </script>
+    </head>
+    <body>
+        <h1 class="title">hello javascript1</h1>
+        <h1 class="title">hello javascript2</h1>
+        <h1 class="title">hello javascript3</h1>
+        <h1>hello javascript4</h1>
+        <h1>hello javascript5</h1>
+        <h1>hello javascript6</h1>
+
+        <button type="button" id="myButton" onclick="alertMessage('asdf')">my button</button>
+    </body>
+</html>

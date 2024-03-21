@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <!--        <script src="./script.js"></script>-->
+        <!--        <script>-->
+        <!--            let counter = {-->
+        <!--                count: 100,-->
+        <!--                increase() {-->
+        <!--                    this.count++;-->
+        <!--                }-->
+        <!--            };-->
+
+        <!--            alert("int-count:" + counter.count);-->
+        <!--            counter.increase();-->
+        <!--            alert("count1:" + counter.count);-->
+        <!--            alert("count2:" + counter['count']);-->
+        <!--        </script>-->
+        <script>
+            window.addEventListener("DOMContentLoaded", function () {
+                const h1 = document.createElement("h1");
+                h1.id = "mySubject";
+                h1.textContent = "mySubject";
+                document.body.appendChild(h1);
+
+                const h1Ref = document.getElementById("mySubject");
+                const ageTableBody = document.getElementById("ageTableBody");
+                for (let age = 10; age <= 100; age += 10) {
+                    const tr = document.createElement("tr");
+                    const td = document.createElement("td");
+                    td.textContent = age;
+                    tr.appendChild(td);
+                    ageTableBody.append(tr);
+                }
+            });
+        </script>
+    </head>
+    <body>
+        <!--        <h1>hello javascript</h1>-->
+        <!--        <form>-->
+        <!--            회원 아이디 : <input type="text" id="userId"/>-->
+        <!--            <br/>-->
+        <!--            <button type="button" id="loginBtn">login</button>-->
+        <!--        </form>-->
+
+        <table>
+            <thead>
+                <tr>
+                    <th>나이</th>
+                </tr>
+            </thead>
+            <tbody id="ageTableBody">
+
+            </tbody>
+        </table>
+    </body>
+</html>
