@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Map;
 
-@FeignClient("user-service")
+//@FeignClient(value = "user-service")
 public interface UserServiceClient {
     @GetMapping("/users/{userId}/detail")
     Map<String, Object> retrieveUserDetail(@PathVariable String userId);

@@ -9,10 +9,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="demo-auth-service" />
         <module name="demo-user-service" />
+        <module name="demo-front1" />
         <module name="demo-gateway" />
         <module name="eureka" />
-        <module name="demo-api-1" />
-        <module name="demo-api" />
       </profile>
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
@@ -22,6 +21,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="demo-api" target="17" />
+      <module name="demo-front" target="11" />
       <module name="demo-sample" target="11" />
       <module name="demo-sample.main" target="11" />
       <module name="demo-sample.test" target="11" />
@@ -30,8 +31,9 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="demo-api" options="-parameters" />
-      <module name="demo-api-1" options="-parameters" />
       <module name="demo-auth-service" options="-parameters" />
+      <module name="demo-front" options="-parameters" />
+      <module name="demo-front1" options="-parameters" />
       <module name="demo-gateway" options="-parameters" />
       <module name="demo-sample" options="-parameters" />
       <module name="demo-user-service" options="-parameters" />

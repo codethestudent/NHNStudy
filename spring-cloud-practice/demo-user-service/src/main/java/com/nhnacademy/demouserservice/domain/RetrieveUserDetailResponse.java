@@ -8,7 +8,6 @@ public class RetrieveUserDetailResponse {
     private final String pw;
 
     public RetrieveUserDetailResponse(String testId, String testPw) {
-
         this.id = testId;
         this.pw = testPw;
     }

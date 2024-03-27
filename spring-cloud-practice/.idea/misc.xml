@@ -14,10 +14,13 @@
         <option value="$PROJECT_DIR$/demo-user-service/pom.xml" />
         <option value="$PROJECT_DIR$/demo-auth-service/pom.xml" />
         <option value="$PROJECT_DIR$/demo-sample/pom.xml" />
+        <option value="$PROJECT_DIR$/demo-front/pom.xml" />
+        <option value="$PROJECT_DIR$/demo-front1/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/demo-front/pom.xml" />
         <option value="$PROJECT_DIR$/demo-sample/pom.xml" />
       </set>
     </option>
