@@ -7,7 +7,7 @@ spring:
 
 eureka:
   instance:
-    instance-id: ${ spring.application.name }:${random.uuid}
+    instance-id: ${spring.application.name}:${random.uuid}
 
   client:
     service-url:

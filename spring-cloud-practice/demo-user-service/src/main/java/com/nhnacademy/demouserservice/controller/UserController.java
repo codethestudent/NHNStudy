@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
-
     @GetMapping("/{userId}/detail")
     public ResponseEntity<RetrieveUserDetailResponse> retrieveUserDetail(@PathVariable String userId) {
         RetrieveUserDetailResponse response = userService.retrieveUserDetail(userId);
