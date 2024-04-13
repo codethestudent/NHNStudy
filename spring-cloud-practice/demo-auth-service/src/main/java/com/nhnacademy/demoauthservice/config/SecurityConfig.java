@@ -13,12 +13,10 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -33,6 +31,11 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.headers()
+                .frameOptions().disable()
+                .cacheControl().disable()
+                .and();
+
         http
                 .cors().configurationSource(corsConfigurationSource())
                 .and()
@@ -42,11 +45,13 @@ public class SecurityConfig {
                 .and()
                 .formLogin().disable() // formLogin은 세션 기반 인증에 사용되고 로그인 폼을 통한 인증과 세션 생성을 관리함
                 .httpBasic().disable()
-                .addFilter(new JwtAuthenticationFilter(jwtTokenProvider(),
-                        authenticationManager(null), objectMapper()))
+                .addFilterAt(new JwtAuthenticationFilter(jwtTokenProvider(),
+                        authenticationManager(null), objectMapper()), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/api/users/**")
-                .permitAll();
+                .antMatchers("/login")
+                .permitAll()
+                .anyRequest().authenticated();
+
         return http.build();
     }
 

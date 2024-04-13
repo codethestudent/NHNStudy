@@ -40,6 +40,7 @@
             <input type="text" id="username" placeholder="Username">
             <input type="password" id="password" placeholder="Password">
             <button onclick="login()">Login</button>
+            <button onclick="signup()">signup</button>
         </div>
 
         <script>
@@ -47,12 +48,12 @@
                 var username = document.getElementById("username").value;
                 var password = document.getElementById("password").value;
 
-                fetch('http://localhost:57209/login', {
+                fetch('/login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({username: username, password: password}),
+                    body: JSON.stringify({id: username, pw: password}),
                 })
                     .then(response => response.json())
                     .then(data => {
@@ -62,6 +63,27 @@
                         console.error('Error:', error);
                     });
             }
+
+            function signup() {
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+
+                fetch('/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({id: username, pw: password}),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+            }
+
         </script>
     </body>
 </html>
