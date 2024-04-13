@@ -1,3 +1,23 @@
 *.class
 practice/
 /target
+
+# IntelliJ IDEA 관련
+.idea/
+*.iml
+
+# 빌드 파일
+*/target/
+*/build/
+
+# 로그 파일
+*.log
+
+# 패키징된 파일
+*.jar
+*.war
+*.ear
+
+# OS 생성 파일
+.DS_Store
+Thumbs.db
