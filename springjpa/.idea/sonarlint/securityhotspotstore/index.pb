@@ -21,3 +21,7 @@ m
 =src/main/java/com/nhnacademy/springjpa/config/RootConfig.java,7/4/7409da75baf87efe894db987d42cb57f21e6d269
 l
 <src/main/java/com/nhnacademy/springjpa/config/WebConfig.java,e/5/e5d03a17c9639c998aab4bb7d5d1e765a8d09aa1
+j
+:src/main/java/com/nhnacademy/springjpa/entity/Address.java,6/e/6eb9a7debe4756c5544d6d9b7c56cae40fe1f74e
+m
+=src/main/java/com/nhnacademy/springjpa/WebAppInitializer.java,c/1/c1cf6ae611403a5dd12535f536f34073e25d1543
